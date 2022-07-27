@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
-import {Text} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {loadSing} from '../../store/modules/Auth/actions';
 
 import {Button, Input} from '../../components';
-import {Container, Content, Title} from './styles';
+import {Container, Content, Title, Error} from './styles';
 import colors from '../../helpers/colors';
+import {AuthState} from '../../store/modules/Auth/types';
+import {ApplicationState} from '../../store';
 
 export default () => {
+  const {error}: AuthState = useSelector<ApplicationState>(state => state.auth);
+
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState('');
@@ -34,6 +37,7 @@ export default () => {
           onSubmitEditing={handleSignin}
         />
         <Button onPress={handleSignin}>Sign in</Button>
+        {error && <Error>{error}</Error>}
       </Content>
     </Container>
   );

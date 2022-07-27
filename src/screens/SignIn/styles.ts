@@ -27,3 +27,8 @@ export const Title = styled.Text`
   color: ${colors.black2};
   margin-top: 20px;
 `;
+
+export const Error = styled.Text`
+  color: red;
+  margin-top: 10px;
+`;

@@ -17,10 +17,6 @@ export function* load(data: DTOLoadPayload) {
   } catch (err: AxiosError) {
     console.log('err load signin', err);
 
-    if (err?.response?.data?.errors) {
-      yield put(singninError(err?.response?.data?.errors[0]));
-    } else {
-      yield put(singninError('erro ao efetuar o login'));
-    }
+    yield put(singninError('user not found'));
   }
 }
