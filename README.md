@@ -7,8 +7,9 @@
 - [x] configurar redux
 - [x] requisitar api pelo redux
 - [x] salvar dados do usuário
-- [ ] criar componentes
-- [ ] navegação de usuário logado
+- [x] criar componentes
+- [x] navegação de usuário logado
+- [x] botão deslogar
+- [ ] mostrar erro do login
 - [ ] mostrar informações do usuário
-- [ ] botão deslogar
 - [ ] mostrar repositórios

@@ -1,15 +1,26 @@
 import React from 'react';
 
 import {StatusBar} from 'react-native';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 
-import store from './src/store';
+import store, {ApplicationState} from './src/store';
+import {AuthState} from './src/store/modules/Auth/types';
 
-import Home from './src/screens/Home';
+import {Home, SignIn} from './src/screens';
 
-export default () => (
-  <Provider store={store}>
-    <Home />
-    <StatusBar backgroundColor="white" barStyle="dark-content" />
-  </Provider>
-);
+const Navigation = () => {
+  const {logged}: AuthState = useSelector<ApplicationState>(
+    state => state.auth,
+  );
+
+  return logged ? <Home /> : <SignIn />;
+};
+
+export default () => {
+  return (
+    <Provider store={store}>
+      <Navigation />
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+    </Provider>
+  );
+};
