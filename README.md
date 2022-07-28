@@ -10,6 +10,7 @@
 - [x] criar componentes
 - [x] navegação de usuário logado
 - [x] botão deslogar
-- [ ] mostrar erro do login
+- [x] mostrar erro do login
+- [x] config para persistir o store do redux
 - [ ] mostrar informações do usuário
 - [ ] mostrar repositórios
