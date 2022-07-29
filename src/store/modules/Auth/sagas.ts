@@ -1,5 +1,5 @@
 import {call, put} from 'redux-saga/effects';
-import {AxiosError} from 'axios';
+import {AxiosError, AxiosResponse} from 'axios';
 
 import api from '../../../services/api';
 
@@ -11,7 +11,10 @@ export function* load(data: DTOLoadPayload) {
   try {
     const credentials: UserCredentialsSing = data.payload.data;
 
-    const response = yield call(api.get, `/users/${credentials.login}`);
+    const response: AxiosResponse = yield call(
+      api.get,
+      `/users/${credentials.login}`,
+    );
 
     yield put(singninSucess(response.data));
   } catch (err: AxiosError) {

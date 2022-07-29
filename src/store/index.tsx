@@ -2,6 +2,11 @@ import {createStore, applyMiddleware, Store, compose} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  offlineMiddleware,
+  suspendSaga,
+  consumeActionMiddleware,
+} from 'redux-offline-queue';
 
 import {AuthState} from './modules/Auth/types';
 
@@ -15,7 +20,7 @@ export interface ApplicationState {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'offline'],
 };
 
 // redux config
@@ -24,7 +29,10 @@ const enhancers = [];
 
 // saga middleware
 const sagaMiddleware = createSagaMiddleware();
-middleware.push(sagaMiddleware);
+
+middleware.push(offlineMiddleware(null));
+middleware.push(suspendSaga(sagaMiddleware));
+middleware.push(consumeActionMiddleware());
 
 // assemble middleware
 enhancers.push(applyMiddleware(...middleware));
