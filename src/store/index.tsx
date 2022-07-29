@@ -8,6 +8,7 @@ import {
   consumeActionMiddleware,
 } from 'redux-offline-queue';
 
+import Reactotron from '../config/reactotron';
 import {AuthState} from './modules/Auth/types';
 
 import rootReducer from './modules/rootReducer';
@@ -41,7 +42,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store: Store<ApplicationState> = createStore(
   persistedReducer,
-  compose(...enhancers),
+  compose(...enhancers, Reactotron.createEnhancer()),
 );
 const persistor = persistStore(store);
 

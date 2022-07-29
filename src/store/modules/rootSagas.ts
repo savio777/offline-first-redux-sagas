@@ -1,12 +1,12 @@
-import {all, spawn, takeLatest} from 'redux-saga/effects';
+import {all, spawn, takeEvery, takeLatest} from 'redux-saga/effects';
 
 import {AuthTypes} from './Auth/types';
 import {load} from './Auth/sagas';
 import {startWatchingNetworkConnectivity} from './Offline/sagas';
 
 export default function* rootSaga() {
-  return yield all([
+  yield all([
     spawn(startWatchingNetworkConnectivity),
-    takeLatest(AuthTypes.SINGN_LOAD, load),
+    takeEvery(AuthTypes.SINGN_LOAD, load),
   ]);
 }

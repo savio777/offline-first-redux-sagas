@@ -5,8 +5,8 @@ import {ONLINE, OFFLINE} from 'redux-offline-queue';
 
 export function* startWatchingNetworkConnectivity() {
   const channel = eventChannel(emitter => {
-    NetInfo.addEventListener(emitter);
-    return () => NetInfo.addEventListener(emitter);
+    NetInfo.addEventListener(state => emitter(state.isConnected));
+    return () => NetInfo.addEventListener(state => emitter(state.isConnected));
   });
 
   try {

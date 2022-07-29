@@ -1,6 +1,5 @@
 import {Reducer} from 'redux';
 import {markActionsOffline} from 'redux-offline-queue';
-import {loadSing} from './actions';
 
 import {AuthState, AuthTypes} from './types';
 
@@ -11,7 +10,14 @@ const initialState: AuthState = {
   error: '',
 };
 
-markActionsOffline(loadSing, AuthTypes.SINGN_LOAD);
+const Creators = {
+  authSignin: (login: string) => ({
+    type: AuthTypes.SINGN_LOAD,
+    login,
+  }),
+};
+
+markActionsOffline(Creators, ['authSignin']);
 
 const authReducer: Reducer<AuthState> = (
   state: AuthState = initialState,

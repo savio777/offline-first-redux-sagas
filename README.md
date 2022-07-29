@@ -15,7 +15,6 @@
 - [x] config para persistir o store do redux
 - [x] adicionar reactotron
 - [ ] adicionar fila de requisições offline
-- [ ] config
 - [ ] mostrar informações do usuário
 - [ ] mostrar repositórios
 

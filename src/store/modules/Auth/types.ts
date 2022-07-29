@@ -1,8 +1,8 @@
 export enum AuthTypes {
-  SINGN_LOAD = '@auth/load',
-  SINGN_IN_USER = '@auth/singnin',
-  SING_OUT_USER = '@auth/singout',
-  SIGNIN_ERROR = '@auth/errorsingin',
+  SINGN_LOAD = 'auth_SINGN_LOAD',
+  SINGN_IN_USER = 'auth_SINGN_IN_USER',
+  SING_OUT_USER = 'auth_SING_OUT_USER',
+  SIGNIN_ERROR = 'auth_SIGNIN_ERROR',
 }
 
 export interface UserCredentialsSing {
